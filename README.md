@@ -1,84 +1,140 @@
 AR 🐍
 
-AR is a small Python library for animated terminal text and text-based user interface (TUI) components.
+Animated Terminal Text & Box Renderer for Python
 
-Built by Gokul Dahal, Nepal 🇳🇵
+AR is a small Python library created by Gokul Dahal, Nepal. It provides animated terminal text and dynamically sized text boxes to make command-line programs look more interesting.
+
+Built while developing a text-based zombie RPG. ⚔️
 
 ✨ Features
 
-- Animated character-by-character text
-- Word-by-word text animation
-- Dynamic-width text boxes
-- Customizable animation speed
-- Reusable class-based methods
+- ⌨️ Character-by-character text animation
+- 💬 Word-by-word text animation
+- 📦 Dynamically sized text boxes
+- 🎨 Custom box titles and multiple text lines
+- ⚡ Lightweight — uses Python's standard library
+- 🧩 Simple class-based interface with static methods
 
-📦 Installation
+📥 Installation
 
-Download "ar.py" and place it in your Python project's directory.
+AR is currently an early-development project.
 
-Import the library:
+1. Download "ar.py" from this repository.
+2. Place it in your Python project's directory.
+3. Import the "AR" class into your Python file.
 
 from ar import AR
 
-🎬 Animation
+No external packages are required by the code shown in the current version.
 
-AR.animation(text, delay=0.015, space=True, wbw=False)
+⌨️ Animated Text
+
+Use "AR.animation()" to display text with a typing effect.
+
+Example
+
+from ar import AR
+
+AR.animation("Hello, world!")
 
 Parameters
 
 Parameter| Type| Default| Description
-"text"| "str"| Required| The text to display.
-"delay"| "float"| "0.015"| Time delay in seconds between characters or words.
-"space"| "bool"| "True"| Prints a newline after the animation if enabled.
-"wbw"| "bool"| "False"| Enables word-by-word animation when "True"; otherwise, animates character by character.
+"text"| "str"| Required| The text to display
+"delay"| "float"| "0.015"| Delay between characters or words, in seconds
+"space"| "bool"| "True"| Prints a newline after the animation
+"wbw"| "bool"| "False"| Enables word-by-word animation when "True"
+
+Character-by-character animation
+
+AR.animation("Loading the game...", delay=0.03)
+
+Word-by-word animation
+
+AR.animation(
+    "Welcome to the game!",
+    delay=0.2,
+    wbw=True
+)
+
+Control the newline
+
+AR.animation("Loading...", space=False)
+
+Setting "space=False" prevents the function from printing a newline after the animation.
+
+📦 Animated Text Box
+
+Use "AR.draw()" to display multiple lines inside a box. Its width adjusts automatically to fit the longest line.
 
 Example
 
-AR.animation("Hello, world!")
-AR.animation("Loading...", delay=0.1)
-AR.animation("A zombie approaches!", wbw=True)
-AR.animation("Done!", space=False)
-
-🖥️ Draw a Text Box
-
-AR.draw(title, *texts)
-
-Draws a bordered text box whose width adjusts automatically to the longest text line.
-
-Parameters
-
-Parameter| Type| Description
-"title"| "str"| The heading displayed above the box.
-"*texts"| "str" arguments| One or more text lines displayed inside the box. The box width is determined by the longest line.
-
-Example
+from ar import AR
 
 AR.draw(
-    "INFO",
-    "KILLED THE ZOMBIE!",
+    "COMBAT",
+    "Zombie defeated!",
     "EXP +20",
     "HP: 75",
     "LEVEL UP!"
 )
 
-Output:
+Output
 
-INFO
-----------------------
-| KILLED THE ZOMBIE! |
-| EXP +20            |
-| HP: 75             |
-| LEVEL UP!          |
-----------------------
+COMBAT
+---------------------
+| Zombie defeated!  |
+| EXP +20           |
+| HP: 75            |
+| LEVEL UP!         |
+---------------------
 
-You can pass as many text lines as needed without adding more parameters to the function.
+Output shown for illustration; exact border length depends on the longest line.
 
-Note: At least one text line is required by the current implementation.
+Parameters
+
+Parameter| Description
+"title"| The title displayed above the box
+"*texts"| One or more text lines displayed inside the box
+
+Important: At least one text line must be supplied to "AR.draw()".
+
+Another example
+
+AR.draw(
+    "PLAYER STATUS",
+    "Name: Gokul",
+    "Level: 5",
+    "Health: 100",
+    "EXP: 20/100"
+)
+
+Each line inside the box is displayed using "AR.animation()" with its default settings.
+
+🧪 Requirements
+
+- Python 3
+- A terminal that supports the ANSI cursor-control sequences used by the animation function
 
 🚧 Project Status
 
-AR is currently in early development. Features, parameters, and usage may change as the project evolves.
+Early development — v0.1.0
+
+AR is a learning project, and its features and API may change as development continues.
+
+🛠️ Planned Improvements
+
+- [ ] Custom animation settings for text boxes
+- [ ] More box styles and border characters
+- [ ] Additional terminal UI utilities
+- [ ] Improved error handling and input validation
 
 👨‍💻 Author
 
-Gokul Dahal, Nepal 🇳🇵
+Gokul Dahal, Nepal
+
+Created while learning Python and building a text-based RPG.
+
+---
+
+⭐ If you find this project interesting, consider starring the repository!
