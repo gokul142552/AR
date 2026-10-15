@@ -3,8 +3,8 @@ import time
 
 class AR:
 
-    @staticmethod                                                                             
-    def animation(text, delay = 0.015, space = True,wbw = False):                                
+    @staticmethod
+    def animation(text, delay = 0.015, space = True,wbw = False):
         print("\033[?25l", end="")
         if wbw == False:
             for char in text:
@@ -12,26 +12,28 @@ class AR:
                 sys.stdout.flush()
                 time.sleep(delay)
         else:
-            WBW = text.split()
-            for word in WBW:
-                sys.stdout.write(word+" ")
+            import re
+            WBW = re.split(r'(\s+)', text)
+            for part in WBW:
+                sys.stdout.write(part)
                 sys.stdout.flush()
-                time.sleep(delay)
+                if part.strip():
+                    time.sleep(delay)
         print("\033[?25h", end="")
         if space:
             print()
 
     @staticmethod
-def draw(title, *texts, delay=0.015, wbw=False):
-    width = len(max(texts, key=len))
-    border = "-" * (width + 4)
+    def draw(title, *texts, delay=0.015, wbw=False):
+        width = len(max(texts, key=len))
+        border = "-" * (width + 4)
 
-    print(title)
-    print(border)
-    for text in texts:
-        AR.animation(
-            "| " + text.ljust(width) + " |",
-            delay=delay,
-            wbw=wbw
-        )
-    print(border)
+        print(title)
+        print(border)
+        for text in texts:
+            AR.animation(
+                "| " + text.ljust(width) + " |",
+                delay=delay,
+                wbw=wbw
+            )
+        print(border)
