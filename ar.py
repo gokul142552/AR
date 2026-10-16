@@ -24,16 +24,18 @@ class AR:
             print()
 
     @staticmethod
-    def draw(title, *texts, delay=0.015, wbw=False):
-        width = len(max(texts, key=len))
+    def draw(title="Default Title", *texts, delay=0.015, wbw=False):
+        if not texts:
+            texts = ("Default Label",)
+        width = max(len(title), max(len(text) for text in texts))
         border = "-" * (width + 4)
 
         print(title)
         print(border)
         for text in texts:
             AR.animation(
-                "| " + text.ljust(width) + " |",
+                "| " + text.    ljust(width) + " |",
                 delay=delay,
-                wbw=wbw
-            )
+                wbw=wbw 
+               )
         print(border)
