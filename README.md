@@ -118,7 +118,7 @@ Each line inside the box is displayed using "AR.animation()" with its default se
 
 🚧 Project Status
 
-Early development — v0.1.0
+Early development — v0.1.1
 
 AR is a learning project, and its features and API may change as development continues.
 
