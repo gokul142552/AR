@@ -34,7 +34,7 @@ class AR:
         print(border)
         for text in texts:
             AR.animation(
-                "| " + text.    ljust(width) + " |",
+                "| " + text.ljust(width) + " |",
                 delay=delay,
                 wbw=wbw 
                )
